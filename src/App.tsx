@@ -14,7 +14,7 @@ const FAQ = React.lazy(() => import('./features/FAQ'));
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-base-100 text-text-primary selection:bg-primary/30 selection:text-primary overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-dark-1 text-text-1 selection:bg-gold-1/30 selection:text-gold-2 overflow-x-hidden">
       <Navbar />
       <main id="main-content" className="flex-grow w-full relative">
         <Hero id="hero" />
@@ -23,7 +23,7 @@ export default function App() {
         <Menu id="cardapio" />
         
         <Suspense fallback={
-          <div className="min-h-[300px] flex items-center justify-center text-primary w-full tracking-[0.2em] text-xs uppercase" aria-live="polite" aria-busy="true">
+          <div className="min-h-[300px] flex items-center justify-center text-gold-1 w-full tracking-[0.2em] text-xs uppercase" aria-live="polite" aria-busy="true">
             Preparando...
           </div>
         }>

@@ -12,21 +12,21 @@ const galleryImages = [
 
 export default function Gallery({ id }: { id: string }) {
   return (
-    <Section id={id} className="bg-base-100 py-32" aria-labelledby="gallery-heading">
+    <Section id={id} className="bg-dark-1 py-32" aria-labelledby="gallery-heading">
       <div className="flex flex-col gap-20">
         
         {/* Header da Galeria */}
         <header className="text-center flex flex-col gap-6 items-center max-w-4xl mx-auto px-6">
           <FadeUp>
-            <span className="text-primary text-[10px] md:text-sm font-semibold tracking-[0.3em] uppercase">Nosso Ambiente</span>
+            <span className="text-gold-2 text-[10px] md:text-sm font-semibold tracking-[0.3em] uppercase">Nosso Ambiente</span>
           </FadeUp>
           <FadeUp delay={0.1}>
-             <h2 id="gallery-heading" className="text-4xl md:text-[3.5rem] font-headings font-light text-text-primary">
-                A <span className="font-serif italic text-primary">Atmosfera</span> Áureo
+             <h2 id="gallery-heading" className="text-4xl md:text-[3.5rem] font-headings font-light text-text-1">
+                A <span className="font-serif italic text-gold-2">Atmosfera</span> Áureo
               </h2>
           </FadeUp>
           <FadeUp delay={0.2}>
-             <p className="text-text-secondary text-base lg:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+             <p className="text-text-2 text-base lg:text-lg font-light leading-relaxed max-w-2xl mx-auto">
                 Cada detalhe da nossa casa foi pensado para criar memórias inesquecíveis. Um refúgio de sofisticação e conforto no coração da cidade.
             </p>
           </FadeUp>
@@ -50,7 +50,7 @@ export default function Gallery({ id }: { id: string }) {
                  <ImageReveal src={src} alt={`Galeria ${idx + 1}`} className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 hover:scale-105" />
                  
                  {/* Hover Overlay */}
-                 <div className="absolute inset-0 bg-base-100/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                 <div className="absolute inset-0 bg-dark-1/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                </div>
              )
           })}

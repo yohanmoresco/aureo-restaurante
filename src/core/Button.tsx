@@ -9,10 +9,10 @@ export function Button({ variant = 'primary', fullWidth, className = '', childre
   const baseStyles = "inline-flex items-center justify-center transition-all duration-300 font-medium tracking-wide focus-ring rounded-sm";
   
   const variants = {
-    primary: "bg-primary text-base-100 hover:bg-opacity-90 hover:scale-[1.02] shadow-lg shadow-primary/20",
-    secondary: "bg-base-100 text-text-primary border border-white/10 hover:border-primary/50 hover:bg-base-200",
-    tertiary: "bg-transparent text-text-primary hover:text-primary underline-offset-4 hover:underline",
-    outline: "bg-transparent text-text-primary border border-white/10 hover:border-white transition-colors"
+    primary: "bg-gradient-premium text-dark-1 hover:brightness-110 hover:scale-[1.02] shadow-lg shadow-gold-3/20 font-semibold border border-transparent",
+    secondary: "bg-transparent text-text-1 border border-border-gold hover:bg-gold-1/10",
+    tertiary: "bg-transparent text-text-1 hover:text-gold-1 underline-offset-4 hover:underline",
+    outline: "bg-transparent text-text-1 border border-border-gold hover:bg-gold-1/10 transition-colors"
   };
 
   const sizeStyles = variant === 'tertiary' ? "px-0 py-2" : "px-8 py-4";

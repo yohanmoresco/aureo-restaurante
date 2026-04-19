@@ -18,7 +18,7 @@ export default function Hero({ id }: { id: string }) {
     <Section 
       id={id} 
       disablePadding
-      className="relative min-h-[100dvh] flex items-center justify-center bg-base-100 overflow-hidden" 
+      className="relative min-h-[100dvh] flex items-center justify-center bg-dark-1 overflow-hidden" 
       aria-labelledby="hero-heading"
     >
       {/* Background Image com Zoom Lento (Ambiente Sensorial) */}
@@ -31,27 +31,27 @@ export default function Hero({ id }: { id: string }) {
           animate={{ scale: 1 }}
           transition={{ duration: 10, ease: "easeOut" }}
         />
-        <div className="absolute inset-0 bg-base-100/60 transition-opacity"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-base-100 via-transparent to-base-100/50"></div>
+        <div className="absolute inset-0 bg-dark-1/60 transition-opacity"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-dark-1 via-transparent to-dark-1/50"></div>
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center text-center gap-10 max-w-4xl mx-auto px-4 w-full pt-20">
         <div className="flex flex-col gap-6">
           <FadeUp delay={0.2}>
-            <span className="text-primary text-xs md:text-sm font-semibold tracking-[0.3em] uppercase drop-shadow-md">
+            <span className="text-gold-1 text-xs md:text-sm font-semibold tracking-[0.3em] uppercase drop-shadow-md">
               Alta Culinária Contemporânea
             </span>
           </FadeUp>
           
           <FadeUp delay={0.4}>
-            <h1 id="hero-heading" className="text-4xl md:text-6xl lg:text-[5rem] leading-[1.1] font-headings font-light text-text-primary tracking-tight">
+            <h1 id="hero-heading" className="text-4xl md:text-6xl lg:text-[5rem] leading-[1.1] font-headings font-light text-text-1 tracking-tight">
               A Arte da <br />
-              <span className="text-primary italic font-serif pr-2">Alta Gastronomia</span>
+              <span className="text-gold-1 italic font-serif pr-2">Alta Gastronomia</span>
             </h1>
           </FadeUp>
           
           <FadeUp delay={0.6}>
-            <p className="text-base md:text-lg text-text-primary/80 mt-4 max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-base md:text-lg text-text-2 mt-4 max-w-2xl mx-auto font-light leading-relaxed">
               Uma composição sensorial de sabores, texturas e momentos inesquecíveis no coração da cidade.
             </p>
           </FadeUp>
@@ -61,7 +61,7 @@ export default function Hero({ id }: { id: string }) {
           <Button onClick={scrollToBooking} fullWidth={false} className="w-full sm:w-auto sm:min-w-[200px]">
             Reservar Mesa
           </Button>
-          <Button onClick={scrollToMenu} variant="secondary" fullWidth={false} className="w-full sm:w-auto sm:min-w-[200px] border-white/20 text-text-primary hover:border-primary hover:text-text-primary">
+          <Button onClick={scrollToMenu} variant="secondary" fullWidth={false} className="w-full sm:w-auto sm:min-w-[200px] border-border-gold text-text-1 hover:border-gold-1 hover:text-text-1">
             Ver Cardápio
           </Button>
         </FadeUp>
