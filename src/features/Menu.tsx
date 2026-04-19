@@ -1,0 +1,118 @@
+import { useState } from 'react';
+import { Section } from '../core/Section';
+import { Button } from '../core/Button';
+import { FadeUp, StaggerContainer, StaggerItem } from '../core/Motion';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const menuCategories = ['Entradas', 'Principais', 'Sobremesas', 'Bebidas'];
+const mockMenuItems = {
+  'Entradas': [
+    { name: 'Carpaccio de Salmão Defumado', desc: 'Lâminas finas de salmão com redução de azeite trufado, alcaparras e caviar crocante.', price: '68' },
+    { name: 'Bruschetta Selvagem', desc: 'Mix de cogumelos selvagens com ervas, queijo brie maçaricado no pão rústico.', price: '52' },
+    { name: 'Burrata ao Pesto', desc: 'Coração cremoso com pesto de manjericão genovês e tomatinhos curados.', price: '58' },
+    { name: 'Tartare de Carne Classic', desc: 'Corte magro, temperos de mostarda dijon e gema curada por cima.', price: '72' }
+  ],
+  'Principais': [
+    { name: 'Risoto de Polvo', desc: 'Arroz arbóreo finalizado no caldo de polvo com flor de sal e limão siciliano.', price: '125' },
+    { name: 'Mignon ao Poivre', desc: 'Corte central bovino e clássico molho poivre com mil folhas de batata.', price: '135' },
+    { name: 'Cordeiro Confitado', desc: 'Desmanchando na boca, acompanhado de purê de mandioquinha defumado.', price: '145' },
+    { name: 'Ravioli de Pera e Gorgonzola', desc: 'Massa fresca, figos caramelizados e crocantes de parma.', price: '95' }
+  ],
+  'Sobremesas': [
+    { name: 'Tiramisù Originale', desc: 'Creme leve mascarpone, cacau polvilhado, marsala e biscoitos genoveses.', price: '42' },
+    { name: 'Panna Cotta Tropical', desc: 'Clássico creme de baunilha em fava com coulis de frutas da estação.', price: '38' },
+    { name: 'Suflê de Chocolate', desc: 'Interior morno de cacau 70% belga com sorvete artesanal de pistache.', price: '46' }
+  ],
+  'Bebidas': [
+    { name: 'Vinho Tinto', desc: 'Malbec ou Cabernet Sauvignon. Consulte carta de vinhos.', price: 'Sob consulta' },
+    { name: 'Clericot Elegance', desc: 'Jarra artesanal de frutas maceradas, hortelã e sauvignon blanc.', price: '140' },
+    { name: 'Gin Botanic', desc: 'Gin premium, gelo cristal, infusão de frutas vermelhas e cardamomo.', price: '45' }
+  ]
+};
+
+export default function Menu({ id }: { id: string }) {
+  const [activeCategory, setActiveCategory] = useState(menuCategories[0]);
+
+  return (
+    <Section id={id} className="bg-base-200 border-t border-b border-white/5 py-32" aria-labelledby="menu-heading">
+      <div className="flex flex-col gap-20 max-w-6xl mx-auto relative min-h-[800px]">
+        
+        {/* Header Menu */}
+        <header className="text-center flex flex-col gap-6 items-center">
+          <FadeUp>
+            <span className="text-primary text-[10px] md:text-sm font-semibold tracking-[0.3em] uppercase">Seleção do Chef</span>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <h2 id="menu-heading" className="text-4xl md:text-[3.5rem] font-headings font-light text-text-primary">
+              Nossa <span className="font-serif italic text-primary">Composição</span>
+            </h2>
+          </FadeUp>
+          <FadeUp delay={0.2}>
+            <div className="h-[40px] w-[1px] bg-primary/20 mt-4"></div>
+          </FadeUp>
+        </header>
+
+        {/* Categorias Tabs com Sublinhado Animado (Motion Layout) */}
+        <FadeUp delay={0.3} className="flex flex-nowrap overflow-x-auto gap-12 md:justify-center border-b border-white/5 pb-2 no-scrollbar px-6 md:px-0 relative" role="tablist" aria-label="Categorias do Menu">
+          {menuCategories.map((cat) => (
+            <button
+              key={cat}
+              role="tab"
+              aria-selected={activeCategory === cat}
+              aria-controls={`panel-${cat}`}
+              id={`tab-${cat}`}
+              onClick={() => setActiveCategory(cat)}
+              className={`whitespace-nowrap pb-4 text-xs md:text-sm font-medium tracking-[0.2em] transition-colors relative focus-ring rounded-sm
+                ${activeCategory === cat ? 'text-primary' : 'text-text-secondary hover:text-text-primary'}`}
+            >
+              {cat.toUpperCase()}
+              {activeCategory === cat && (
+                <motion.div 
+                  layoutId="activeTabMenu" 
+                  className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-primary" 
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+            </button>
+          ))}
+        </FadeUp>
+
+        {/* Itens do Menu Grid com AnimatePresence para Tab Switching Suave */}
+        <div className="relative flex-grow">
+          <AnimatePresence mode="wait">
+            <StaggerContainer 
+              key={activeCategory} 
+              id={`panel-${activeCategory}`}
+              role="tabpanel"
+              aria-labelledby={`tab-${activeCategory}`}
+              className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-16 lg:gap-x-24 absolute inset-0 pb-16"
+              staggerDelay={0.1}
+            >
+              {mockMenuItems[activeCategory as keyof typeof mockMenuItems].map((item, idx) => (
+                <StaggerItem key={idx} className="flex flex-col gap-3 group">
+                  <div className="flex justify-between items-baseline gap-4">
+                    <h3 className="text-lg md:text-xl font-headings font-light tracking-wide text-text-primary group-hover:text-primary transition-colors duration-300">
+                      {item.name}
+                    </h3>
+                    <div className="flex-1 border-b border-dashed border-white/10 mx-2 self-center translate-y-[-8px]"></div>
+                    <span className="text-primary font-serif italic text-xl whitespace-nowrap opacity-90 group-hover:opacity-100 transition-opacity">
+                      {Number.isNaN(Number(item.price)) ? item.price : `R$ ${item.price}`}
+                    </span>
+                  </div>
+                  <p className="text-sm font-light text-text-secondary leading-[1.6]">
+                    {item.desc}
+                  </p>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </AnimatePresence>
+        </div>
+        
+        <FadeUp delay={0.6} className="mt-8 flex justify-center z-10 sticky bottom-0 bg-gradient-to-t from-base-200 to-transparent pt-12 pb-4">
+           <Button variant="tertiary" className="text-xs uppercase tracking-[0.2em]">Baixar Menu Completo em PDF</Button>
+        </FadeUp>
+
+      </div>
+    </Section>
+  );
+}

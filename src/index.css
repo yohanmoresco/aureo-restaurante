@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #D4AF37;
+  --color-primary-dark: #B5952F;
+  
+  --color-base-100: #0B0E14;
+  --color-base-200: #131720;
+  
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  
+  --font-headings: "Poppins", sans-serif;
+  --font-body: "Poppins", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-base-100);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  ::-moz-selection { background: var(--color-primary); color: var(--color-base-100); }
+  ::selection { background: var(--color-primary); color: var(--color-base-100); }
+
+  .focus-ring {
+    @apply focus:outline-none focus:ring-1 focus:ring-offset-4 focus:ring-offset-base-100 focus:ring-primary;
+  }
+
+  .divider-sutil {
+    @apply border-b border-white/5;
+  }
+}
