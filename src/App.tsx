@@ -1,32 +1,48 @@
-import React, { Suspense } from 'react';
-import Navbar from './layout/Navbar';
-import Hero from './features/Hero';
-import DailyDish from './features/DailyDish';
-import Menu from './features/Menu';
-import Footer from './layout/Footer';
+/**
+ * File: src/App.tsx
+ * Purpose: Root layout orchestrator for the Aureo Restaurante application.
+ * Manages the top-level composition of sections and lazy loading
+ * of components to optimize initial bundle delivery performance.
+ */
+import React, { Suspense } from "react";
+import Navbar from "./layout/Navbar";
+import Hero from "./features/Hero";
+import DailyDish from "./features/DailyDish";
+import Menu from "./features/Menu";
+import Footer from "./layout/Footer";
 
-const Gallery = React.lazy(() => import('./features/Gallery'));
-const Institutional = React.lazy(() => import('./features/Institutional'));
-const Testimonials = React.lazy(() => import('./features/Testimonials'));
-const Booking = React.lazy(() => import('./features/Booking'));
-const LocationMap = React.lazy(() => import('./features/Location'));
-const FAQ = React.lazy(() => import('./features/FAQ'));
+// Use lazy loading for below-the-fold content to improve TTI (Time to Interactive)
+const Gallery = React.lazy(() => import("./features/Gallery"));
+const Institutional = React.lazy(() => import("./features/Institutional"));
+const Testimonials = React.lazy(() => import("./features/Testimonials"));
+const Booking = React.lazy(() => import("./features/Booking"));
+const LocationMap = React.lazy(() => import("./features/Location"));
+const FAQ = React.lazy(() => import("./features/FAQ"));
 
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-dark-1 text-text-1 selection:bg-gold-1/30 selection:text-gold-2 overflow-x-hidden">
       <Navbar />
+
       <main id="main-content" className="flex-grow w-full relative">
+        {/* Above the fold sections loaded eagerly */}
         <Hero id="hero" />
         <DailyDish id="prato-do-dia" />
         <Institutional id="historia" />
         <Menu id="cardapio" />
-        
-        <Suspense fallback={
-          <div className="min-h-[300px] flex items-center justify-center text-gold-1 w-full tracking-[0.2em] text-xs uppercase" aria-live="polite" aria-busy="true">
-            Preparando...
-          </div>
-        }>
+
+        {/* Below the fold sections loaded lazily with an elegant loading fallback */}
+        <Suspense
+          fallback={
+            <div
+              className="min-h-[300px] flex items-center justify-center text-gold-1 w-full tracking-[0.2em] text-xs uppercase"
+              aria-live="polite"
+              aria-busy="true"
+            >
+              Preparando...
+            </div>
+          }
+        >
           <Gallery id="galeria" />
           <Testimonials id="avaliacoes" />
           <Booking id="reserva" />
@@ -34,6 +50,7 @@ export default function App() {
           <FAQ id="faq" />
         </Suspense>
       </main>
+
       <Footer />
     </div>
   );

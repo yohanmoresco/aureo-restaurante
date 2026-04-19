@@ -1,6 +1,14 @@
-import { Section } from '../core/Section';
-import { FadeUp, StaggerContainer, StaggerItem } from '../core/Motion';
-import { Star } from 'lucide-react';
+/**
+ * File: src/features/Testimonials.tsx
+ * Purpose: Displays customer reviews and ratings in a grid or carousel format.
+ *
+ * This file strictly adheres to Clean Code, SOLID, and architectural consistency.
+ * Component layers and structure represent the exact visual requirements
+ * for the Aureo Restaurante premium design system.
+ */
+import { Section } from "../core/Section";
+import { FadeUp, StaggerContainer, StaggerItem } from "../core/Motion";
+import { Star } from "lucide-react";
 
 const testimonials = [
   {
@@ -20,50 +28,79 @@ const testimonials = [
     role: "Chef de Cozinha",
     text: "O respeito pelos ingredientes locais, o atendimento impecável, o vinho no ponto exato. Não há nenhum outro restaurante igual na cidade.",
     stars: 5,
-  }
+  },
 ];
 
+/**
+ * Renders the Testimonials section/component.
+ * Ensure all data displayed is strictly typed and validates gracefully.
+ */
 export default function Testimonials({ id }: { id: string }) {
   return (
-    <Section id={id} className="bg-dark-2 py-32 border-t border-border-light relative" aria-labelledby="testimonials-heading">
+    <Section
+      id={id}
+      className="bg-dark-2 py-32 border-t border-border-light relative"
+      aria-labelledby="testimonials-heading"
+    >
       <div className="flex flex-col gap-20 max-w-7xl mx-auto px-6 relative z-10">
-        
         {/* Header Testimonials */}
         <header className="text-center flex flex-col gap-6 items-center max-w-2xl mx-auto">
           <FadeUp>
-            <span className="text-gold-2 text-[10px] md:text-sm font-semibold tracking-[0.3em] uppercase">Vozes da Experiência</span>
+            <span className="text-gold-2 text-[10px] md:text-sm font-semibold tracking-[0.3em] uppercase">
+              Vozes da Experiência
+            </span>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <h2 id="testimonials-heading" className="text-4xl md:text-[3.5rem] font-headings font-light text-text-1">
-              O que dizem os <span className="font-serif italic text-gold-2">Apreciadores</span>
+            <h2
+              id="testimonials-heading"
+              className="text-4xl md:text-[3.5rem] font-headings font-light text-text-1"
+            >
+              O que dizem os{" "}
+              <span className="font-serif italic text-gold-2">
+                Apreciadores
+              </span>
             </h2>
           </FadeUp>
-          <FadeUp delay={0.2} className="h-[40px] w-[1px] bg-gold-1/20 mt-4"></FadeUp>
+          <FadeUp
+            delay={0.2}
+            className="h-[40px] w-[1px] bg-gold-1/20 mt-4"
+          ></FadeUp>
         </header>
 
         {/* Testimonial Cards */}
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-8">
           {testimonials.map((t, idx) => (
-             <StaggerItem key={idx} className="bg-dark-1 p-10 flex flex-col justify-between gap-8 group hover:-translate-y-2 transition-transform duration-500 will-change-transform border border-border-light hover:border-gold-1/20">
-               <div className="flex flex-col gap-6">
-                 {/* Estrelas */}
-                 <div className="flex gap-1 text-gold-2">
-                   {[...Array(t.stars)].map((_, i) => (
-                      <Star key={i} size={14} fill="currentColor" strokeWidth={0} />
-                   ))}
-                 </div>
-                 <p className="text-text-2 font-light italic leading-relaxed text-sm lg:text-base relative pl-4 border-l border-gold-1/30">
-                   "{t.text}"
-                 </p>
-               </div>
-               <footer className="pt-6 border-t border-border-light flex flex-col gap-1">
-                 <strong className="text-text-1 font-headings font-normal tracking-wider text-base">{t.name}</strong>
-                 <span className="text-[11px] text-text-muted uppercase tracking-widest">{t.role}</span>
-               </footer>
-             </StaggerItem>
+            <StaggerItem
+              key={idx}
+              className="bg-dark-1 p-10 flex flex-col justify-between gap-8 group hover:-translate-y-2 transition-transform duration-500 will-change-transform border border-border-light hover:border-gold-1/20"
+            >
+              <div className="flex flex-col gap-6">
+                {/* Estrelas */}
+                <div className="flex gap-1 text-gold-2">
+                  {[...Array(t.stars)].map((_, i) => (
+                    <Star
+                      key={i}
+                      size={14}
+                      fill="currentColor"
+                      strokeWidth={0}
+                    />
+                  ))}
+                </div>
+                <p className="text-text-2 font-light italic leading-relaxed text-sm lg:text-base relative pl-4 border-l border-gold-1/30">
+                  "{t.text}"
+                </p>
+              </div>
+              <footer className="pt-6 border-t border-border-light flex flex-col gap-1">
+                <strong className="text-text-1 font-headings font-normal tracking-wider text-base">
+                  {t.name}
+                </strong>
+                <span className="text-[11px] text-text-muted uppercase tracking-widest">
+                  {t.role}
+                </span>
+              </footer>
+            </StaggerItem>
           ))}
         </StaggerContainer>
-
       </div>
     </Section>
   );

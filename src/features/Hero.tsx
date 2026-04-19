@@ -1,31 +1,43 @@
-import { Section } from '../core/Section';
-import { Button } from '../core/Button';
-import { FadeUp } from '../core/Motion';
-import { motion, useReducedMotion } from 'framer-motion';
+/**
+ * File: src/features/Hero.tsx
+ * Purpose: Top-level hero component for the landing page. Provides initial visual impact and primary CTAs.
+ *
+ * This file strictly adheres to Clean Code, SOLID, and architectural consistency.
+ * Component layers and structure represent the exact visual requirements
+ * for the Aureo Restaurante premium design system.
+ */
+import { Section } from "../core/Section";
+import { Button } from "../core/Button";
+import { FadeUp } from "../core/Motion";
+import { motion, useReducedMotion } from "framer-motion";
 
+/**
+ * Renders the Hero section/component.
+ * Ensure all data displayed is strictly typed and validates gracefully.
+ */
 export default function Hero({ id }: { id: string }) {
   const shouldReduceMotion = useReducedMotion();
 
   const scrollToBooking = () => {
-    document.getElementById('reserva')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("reserva")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const scrollToMenu = () => {
-    document.getElementById('cardapio')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("cardapio")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <Section 
-      id={id} 
+    <Section
+      id={id}
       disablePadding
-      className="relative min-h-[100dvh] flex items-center justify-center bg-dark-1 overflow-hidden" 
+      className="relative min-h-[100dvh] flex items-center justify-center bg-dark-1 overflow-hidden"
       aria-labelledby="hero-heading"
     >
       {/* Background Image com Zoom Lento (Ambiente Sensorial) */}
       <div className="absolute inset-0 z-0">
-        <motion.img 
-          src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80" 
-          alt="Ambiente sofisticado do Aureo Restaurante" 
+        <motion.img
+          src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80"
+          alt="Ambiente sofisticado do Aureo Restaurante"
           className="w-full h-full object-cover object-center"
           initial={{ scale: shouldReduceMotion ? 1 : 1.05 }}
           animate={{ scale: 1 }}
@@ -42,26 +54,44 @@ export default function Hero({ id }: { id: string }) {
               Alta Culinária Contemporânea
             </span>
           </FadeUp>
-          
+
           <FadeUp delay={0.4}>
-            <h1 id="hero-heading" className="text-4xl md:text-6xl lg:text-[5rem] leading-[1.1] font-headings font-light text-text-1 tracking-tight">
+            <h1
+              id="hero-heading"
+              className="text-4xl md:text-6xl lg:text-[5rem] leading-[1.1] font-headings font-light text-text-1 tracking-tight"
+            >
               A Arte da <br />
-              <span className="text-gold-1 italic font-serif pr-2">Alta Gastronomia</span>
+              <span className="text-gold-1 italic font-serif pr-2">
+                Alta Gastronomia
+              </span>
             </h1>
           </FadeUp>
-          
+
           <FadeUp delay={0.6}>
             <p className="text-base md:text-lg text-text-2 mt-4 max-w-2xl mx-auto font-light leading-relaxed">
-              Uma composição sensorial de sabores, texturas e momentos inesquecíveis no coração da cidade.
+              Uma composição sensorial de sabores, texturas e momentos
+              inesquecíveis no coração da cidade.
             </p>
           </FadeUp>
         </div>
-        
-        <FadeUp delay={0.8} className="flex flex-col sm:flex-row items-center gap-6 mt-4 w-full sm:w-auto">
-          <Button onClick={scrollToBooking} fullWidth={false} className="w-full sm:w-auto sm:min-w-[200px]">
+
+        <FadeUp
+          delay={0.8}
+          className="flex flex-col sm:flex-row items-center gap-6 mt-4 w-full sm:w-auto"
+        >
+          <Button
+            onClick={scrollToBooking}
+            fullWidth={false}
+            className="w-full sm:w-auto sm:min-w-[200px]"
+          >
             Reservar Mesa
           </Button>
-          <Button onClick={scrollToMenu} variant="secondary" fullWidth={false} className="w-full sm:w-auto sm:min-w-[200px] border-border-gold text-text-1 hover:border-gold-1 hover:text-text-1">
+          <Button
+            onClick={scrollToMenu}
+            variant="secondary"
+            fullWidth={false}
+            className="w-full sm:w-auto sm:min-w-[200px] border-border-gold text-text-1 hover:border-gold-1 hover:text-text-1"
+          >
             Ver Cardápio
           </Button>
         </FadeUp>

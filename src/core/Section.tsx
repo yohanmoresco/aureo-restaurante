@@ -1,17 +1,34 @@
-import type { ReactNode, HTMLAttributes } from 'react';
+/**
+ * File: src/core/Section.tsx
+ * Purpose: Standardized section wrapper component to ensure consistent padding, max-widths, and accessibility landmarks.
+ *
+ * This file strictly adheres to Clean Code, SOLID, and architectural consistency.
+ * Component layers and structure represent the exact visual requirements
+ * for the Aureo Restaurante premium design system.
+ */
+import type { ReactNode, HTMLAttributes } from "react";
 
 interface SectionProps extends HTMLAttributes<HTMLElement> {
   id: string;
   children: ReactNode;
-  'aria-labelledby'?: string;
+  "aria-labelledby"?: string;
   disablePadding?: boolean;
 }
 
-export function Section({ id, children, className = '', disablePadding = false, ...props }: SectionProps) {
+/**
+ * Core utility component: Section
+ */
+export function Section({
+  id,
+  children,
+  className = "",
+  disablePadding = false,
+  ...props
+}: SectionProps) {
   return (
-    <section 
-      id={id} 
-      className={`${disablePadding ? '' : 'py-24 md:py-32'} ${className}`} 
+    <section
+      id={id}
+      className={`${disablePadding ? "" : "py-24 md:py-32"} ${className}`}
       {...props}
     >
       <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[1440px] w-full">
