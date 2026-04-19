@@ -59,7 +59,13 @@ export default function Institutional({ id }: { id: string }) {
           </FadeUp>
 
           <FadeUp delay={0.4} className="mt-6">
-            <Button variant="outline" className="text-xs uppercase tracking-[0.2em] px-10 py-5 w-max hover:bg-white hover:text-black hover:border-white transition-all duration-300">Conheça Nossa Equipe</Button>
+            <Button 
+               onClick={() => document.getElementById('galeria')?.scrollIntoView({ behavior: 'smooth' })} 
+               variant="outline" 
+               className="text-xs uppercase tracking-[0.2em] px-10 py-5 w-max hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+            >
+              Conheça Nossa Equipe
+            </Button>
           </FadeUp>
         </div>
 

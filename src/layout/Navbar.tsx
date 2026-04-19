@@ -36,11 +36,11 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: 'O Prato', href: '#destaque' },
-    { label: 'Cardápio', href: '#menu' },
-    { label: 'A Essência', href: '#institucional' },
+    { label: 'O Prato', href: '#prato-do-dia' },
+    { label: 'Cardápio', href: '#cardapio' },
+    { label: 'A Essência', href: '#historia' },
     { label: 'Ambiente', href: '#galeria' },
-    { label: 'Avaliações', href: '#depoimentos' },
+    { label: 'Avaliações', href: '#avaliacoes' },
   ];
 
   return (
