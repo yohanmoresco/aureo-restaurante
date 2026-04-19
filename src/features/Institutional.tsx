@@ -107,7 +107,7 @@ export default function Institutional({ id }: { id: string }) {
                   ?.scrollIntoView({ behavior: "smooth" })
               }
               variant="outline"
-              className="text-xs uppercase tracking-[0.2em] px-10 py-5 w-max hover:bg-gold-1 hover:text-dark-1 hover:border-gold-1 transition-all duration-300"
+              className="text-xs uppercase tracking-[0.2em] px-10 py-5 w-max transition-all duration-300"
             >
               Conheça Nossa Equipe
             </Button>
